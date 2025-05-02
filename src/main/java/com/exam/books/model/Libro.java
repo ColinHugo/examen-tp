@@ -27,6 +27,7 @@ public class Libro {
     @JoinColumn( name = "autor_id", nullable = false )
     private Autor autor;
     private int numeroPaginas;
+    private String isbn;
     private String urlPortada;
 
     @PrePersist

@@ -19,7 +19,7 @@ public class LibroCsvDto {
     @CsvBindByName( column = "numero_paginas", required = true )
     private int numeroPaginas;
 
-    @CsvBindByName( column = "url_portada", required = true )
-    private String urlPortada;
+    @CsvBindByName( column = "isbn", required = true )
+    private String isbn;
 
 }

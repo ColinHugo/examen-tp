@@ -10,6 +10,7 @@ public record LibroResponse (
         String titulo,
         String autor,
         int numeroPaginas,
+        String isbn,
         String urlPortada
 ) {
 }

@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +30,8 @@ public class LibroServiceImpl implements LibroService {
 
     private final AutorRepository autorRepository ;
     private final LibroRepository libroRepository;
+
+    private final PortadaService portadaService;
 
     @Override
     public Page< LibroResponse > findAll( Pageable pageable ) {
@@ -84,7 +85,7 @@ public class LibroServiceImpl implements LibroService {
                 .builder()
                 .titulo( libroRequest.titulo() )
                 .numeroPaginas( libroRequest.numeroPaginas() )
-                .urlPortada( libroRequest.urlPortada() )
+                .urlPortada( portadaService.obtenerUrlPortada( libroRequest.isbn() ) )
                 .autor( autor )
                 .build();
 
@@ -107,7 +108,7 @@ public class LibroServiceImpl implements LibroService {
         libroToUpdate.setTitulo( libroRequest.titulo() );
         libroToUpdate.setAutor( autor );
         libroToUpdate.setNumeroPaginas( libroRequest.numeroPaginas() );
-        libroToUpdate.setUrlPortada( libroRequest.urlPortada() );
+        libroToUpdate.setUrlPortada( portadaService.obtenerUrlPortada( libroRequest.isbn() ) );
 
         Libro libro = libroRepository.save( libroToUpdate );
 
@@ -141,7 +142,8 @@ public class LibroServiceImpl implements LibroService {
             libro.setTitulo( row.getTitulo() );
             libro.setAutor( autor );
             libro.setNumeroPaginas( row.getNumeroPaginas() );
-            libro.setUrlPortada( row.getUrlPortada() );
+            libro.setIsbn( row.getIsbn() );
+            libro.setUrlPortada( portadaService.obtenerUrlPortada( row.getIsbn() ) );
 
             libros.add( libro );
 
@@ -171,6 +173,7 @@ public class LibroServiceImpl implements LibroService {
                 .titulo( libro.getTitulo() )
                 .autor( libro.getAutor().getNombre() )
                 .numeroPaginas( libro.getNumeroPaginas() )
+                .isbn( libro.getIsbn() )
                 .urlPortada( libro.getUrlPortada() )
                 .build();
 

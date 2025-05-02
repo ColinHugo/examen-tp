@@ -24,7 +24,7 @@ public class IsbnValidationService extends WebServiceGatewaySupport {
 
     }
 
-    public boolean validateIsbn10(String isbn) {
+    public boolean validateIsbn10( String isbn ) {
 
         IsValidISBN10 request = new IsValidISBN10();
         request.setSISBN( isbn );

@@ -22,10 +22,7 @@ public record LibroRequest (
         @Positive( message = "Ingresa un número válido" )
         int numeroPaginas,
 
-        @Schema( description = "URL de la portada del Libro", example = "https://example.com/calculo.jpg" )
-        @NotNull( message = "La URL de la portada es obligatoria" )
-        @NotBlank( message = "La URL no puede ir en blanco" )
-        @Size( min = 1, max = 100 )
-        String urlPortada
+        @Schema( description = "ISBN del Libro", example = "9786075700328" )
+        String isbn
 
 ) {}

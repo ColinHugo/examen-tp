@@ -80,9 +80,10 @@ public class LibroController {
 
         if ( StringUtils.hasText( titulo ) || StringUtils.hasText( autor ) ) {
             return ResponseEntity.ok( libroService.findByTituloOAutor( titulo, autor, pageable ) );
-        } // else {
-            return ResponseEntity.ok( libroService.findAll( pageable ) );
-        // }
+        }
+
+        return ResponseEntity.ok( libroService.findAll( pageable ) );
+
 
     }
 
@@ -218,10 +219,13 @@ public class LibroController {
     public ResponseEntity< String > loadLibros(
             @Parameter( description = "Archivo CSV con los datos de libros", required = true )
             @RequestParam MultipartFile archivo ) throws IOException {
+
         libroService.loadLibros( archivo );
+
         return ResponseEntity
                 .status( HttpStatus.CREATED )
                 .body( "Libros cargados con éxito" );
+
     }
 
     @Operation(

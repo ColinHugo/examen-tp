@@ -25,7 +25,7 @@ public class IsbnController {
 
     @Operation(
             summary = "Validar ISBN 13",
-            description = "REST API para determinar si el ISBN 13 es válido"
+            description = "Servicio SOAP para determinar si el ISBN 13 es válido"
     )
     @ApiResponses( {
             @ApiResponse(
@@ -49,7 +49,7 @@ public class IsbnController {
 
     @Operation(
             summary = "Validar ISBN 10",
-            description = "REST API para determinar si el ISBN 10 es válido"
+            description = "Servicio SOAP para determinar si el ISBN 10 es válido"
     )
     @ApiResponses( {
             @ApiResponse(
