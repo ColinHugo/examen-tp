@@ -1,0 +1,37 @@
+# Ignorar todo por defecto
+*
+
+# Incluir archivos clave
+!.gitignore
+!/pom.xml
+!/README.md
+
+# Incluir solo el código fuente real
+!/src/
+!/src/main/
+!/src/main/java/
+!/src/main/java/**
+!/src/main/resources/
+!/src/main/resources/**
+
+# Ignorar tests
+src/test/
+
+# Ignorar archivos generados y de entorno
+target/
+build/
+*.class
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Ignorar IDEs y otros
+.idea/
+*.iml
+.vscode/
+.gradle/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
