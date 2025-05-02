@@ -21,7 +21,7 @@ public class IsbnValidationService extends WebServiceGatewaySupport {
                 .marshalSendAndReceive( "http://webservices.daehosting.com/services/isbnservice.wso", request );
 
         return response.isIsValidISBN13Result();
-        
+
     }
 
     public boolean validateIsbn10(String isbn) {
